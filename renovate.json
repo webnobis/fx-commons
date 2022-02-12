@@ -1,0 +1,19 @@
+{
+	"extends": [
+		"config:base"
+	],
+	"schedule": [
+		"before 6am on the first day of the month"
+	],
+	"packageRules": [
+		{
+			"matchUpdateTypes": [
+				"minor",
+				"patch",
+				"pin",
+				"digest"
+			],
+			"automerge": true
+		}
+	]
+}
