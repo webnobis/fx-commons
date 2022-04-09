@@ -102,13 +102,14 @@ public class GuiTestExtension
 	@Override
 	public void interceptTestMethod(Invocation<Void> invocation, ReflectiveInvocationContext<Method> invocationContext,
 			ExtensionContext context) throws Throwable {
+		AtomicReference<Throwable> exceptionRef = new AtomicReference<>();
 		CountDownLatch waitForStageNotMoreShowing = new CountDownLatch(1);
 		Platform.runLater(() -> {
 			try {
 				invocation.proceed();
-			} catch (Throwable e) {
+			} catch (Throwable t) {
+				exceptionRef.set(t);
 				waitForStageNotMoreShowing.countDown();
-				throw new RuntimeException(e);
 			}
 			Optional.ofNullable(stageRef.getAndSet(null)).ifPresentOrElse(stage -> {
 				Timer timer = new Timer("stage-checker");
@@ -125,6 +126,10 @@ public class GuiTestExtension
 			}, () -> waitForStageNotMoreShowing.countDown());
 		});
 		waitUntilTimeout(context.getRequiredTestMethod(), waitForStageNotMoreShowing);
+		Throwable t = exceptionRef.get();
+		if (t != null) {
+			throw t;
+		}
 	}
 
 	private void waitUntilTimeout(Method method, CountDownLatch waitFor) throws InterruptedException, TimeoutException {

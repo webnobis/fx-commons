@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.webnobis.commons.fx</groupId>
 	<artifactId>fx-commons</artifactId>
-	<version>0.0.1</version>
+	<version>1.0.0</version>
 	<name>Java Fx Commons</name>
 
 	<properties>
