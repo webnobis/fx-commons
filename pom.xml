@@ -9,7 +9,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.module>com.webnobis.commons.fx</project.module>
 		<project.author>Steffen Nobis</project.author>
-		<java.fx.version>21-ea+24</java.fx.version>
+		<java.fx.version>22-ea+9</java.fx.version>
 		<junit.version>5.10.0</junit.version>
 	</properties>
 
