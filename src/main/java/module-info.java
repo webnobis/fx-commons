@@ -9,7 +9,7 @@ import com.webnobis.commons.fx.test.FxTestExtensions;
 @FxTestExtensions 
 module com.webnobis.commons.fx {
 
-	requires javafx.graphics;
+    requires javafx.graphics;
 
 	exports com.webnobis.commons.fx.test;
 
