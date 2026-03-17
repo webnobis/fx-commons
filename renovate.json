@@ -1,9 +1,10 @@
 {
 	"extends": [
-		"config:base",
+		"config:best-practices",
 		":automergeDigest",
 		":automergeMinor",
-		":automergeRequireAllStatusChecks"
+		":automergeRequireAllStatusChecks",
+		":combinePatchMinorReleases"
 	],
 	"schedule": [
 		"before 6am on the first day of the month"
